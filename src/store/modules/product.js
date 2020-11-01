@@ -22,8 +22,16 @@ const mutations = {
 
 const actions = {
   initApp({ commit }) {
-    // processes of vue axios
-    console.log(commit);
+    Vue.axios.get(`${process.env.VUE_APP_FIREBASE_DATABASE_URL}products.json`)
+      .then((res) => {
+        for (let id in res.data) {
+          res.data[id].id = id;
+          commit("updateProductList", res.data[id]);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   saveProduct({ dispatch, commit }, product) {
     Vue.axios.post(`${process.env.VUE_APP_FIREBASE_DATABASE_URL}products.json`, product)
