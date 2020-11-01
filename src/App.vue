@@ -1,7 +1,9 @@
 <template>
   <div>
     <Header></Header>
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
     <Footer></Footer>
   </div>
 </template>
@@ -22,4 +24,17 @@
 </script>
 
 <style>
+  body{
+    background-color: #77889940 !important;
+  }
+  .fade-enter{
+    opacity: 0;
+  }
+  .fade-enter-active{
+    transition: opacity .2s ease-out;
+  }
+  .fade-leave-active{
+    transition: opacity .2s ease-out;
+    opacity: 0;
+  }
 </style>
