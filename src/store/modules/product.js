@@ -10,7 +10,9 @@ const getters = {
     return state.products;
   },
   getProduct(state) {
-    return state.products[0];
+    return id => state.products.filter(element => {
+      return element.id === id;
+    });
   }
 };
 

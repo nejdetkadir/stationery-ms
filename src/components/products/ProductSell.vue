@@ -7,26 +7,28 @@
           <hr>
           <div class="form-group">
             <label>Product name</label>
-            <select class="form-control">
-              <option value="1">Item 1</option>
+            <select class="form-control" v-model="selectedProduct" @change="productSelected">
+              <option
+                  :value="product.id"
+                  v-for="product in getProducts"
+                  :key="product.id">{{ product.name }}</option>
             </select>
           </div>
-          <div class="card mb-2 border border-danger">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-12 text-center">
-                  <div class="mb-3">
-                    <span class="badge badge-info">In stock : 4</span>
-                    <span class="badge badge-primary">Price : 100,5 TL</span>
+          <transition name="fade" mode="out-in">
+            <div class="card mb-2 border border-danger" v-if="selectedProduct">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <div class="mb-3">
+                      <span class="badge badge-info">In stock : {{product.piece}}</span>
+                      <span class="badge badge-primary">Price : {{product.piece | currency}}</span>
+                    </div>
+                    <p class="border border-warning p-2 text-secondary">{{product.description}}</p>
                   </div>
-                  <p class="border border-warning p-2 text-secondary">Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. Assumenda debitis deleniti eos impedit iste numquam quos sit.
-                    Dignissimos, mollitia nemo officia reiciendis repellendus rerum velit. Eos libero magnam
-                    quas tempore!</p>
                 </div>
               </div>
             </div>
-          </div>
+          </transition>
           <div class="form-group">
             <label>Piece</label>
             <input type="text" class="form-control" placeholder="Please enter piece of product..">
@@ -40,8 +42,24 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
-  name: "ProductSell"
+  name: "ProductSell",
+  data() {
+    return{
+      selectedProduct: null,
+      product: null
+    }
+  },
+  computed: {
+    ...mapGetters(["getProducts"]),
+  },
+  methods: {
+    productSelected() {
+      this.product = this.$store.getters.getProduct(this.selectedProduct)[0];
+    }
+  }
 }
 </script>
 
