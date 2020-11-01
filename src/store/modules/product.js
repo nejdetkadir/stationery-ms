@@ -24,11 +24,18 @@ const actions = {
     // processes of vue resource
     console.log(commit);
   },
-  saveProduct({ commit, state }, product) {
+  saveProduct({ dispatch, commit }, product) {
     Vue.axios.post(`${process.env.VUE_APP_FIREBASE_DATABASE_URL}products.json`, product)
       .then((res) => {
+        // update product list
         commit("updateProductList", {id: res.data.name, ...product})
-        console.log(state.products);
+        // update totalSale, totalPurchase and balance
+        let tradeResult = {
+          price: product.price,
+          sale: 0,
+          piece: product.piece
+        }
+        dispatch("setTradeResult", tradeResult)
       })
       .catch((err) => {
         console.log(err)

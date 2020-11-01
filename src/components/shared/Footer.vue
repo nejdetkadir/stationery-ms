@@ -5,23 +5,26 @@
     </span>
     <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
         <strong>Total sell : </strong>
-        <span class="badge badge-danger">34,56</span>
+        <span class="badge badge-danger">{{ getTradeResult.totalPurchase }}</span>
     </span>
     <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
         <strong>Total purchase : </strong>
-        <span class="badge badge-success">34,56</span>
+        <span class="badge badge-success">{{ getTradeResult.totalSale }}</span>
     </span>
     <span class="navbar-text navbar-nav my-2 my-lg-0">
         <strong>Balance : </strong>
-        <span class="badge badge-primary">34,56</span>
+        <span class="badge badge-primary">{{ getTradeResult.balance }}</span>
     </span>
   </nav>
 </template>
 
 <script>
-export default {
-  name: "Footer"
-}
+  import { mapGetters } from "vuex";
+
+  export default {
+    name: "Footer",
+    computed: mapGetters(["getTradeResult"])
+  }
 </script>
 
 <style scoped>
