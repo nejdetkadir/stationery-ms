@@ -1,14 +1,14 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #563F7A">
-    <a class="navbar-brand" href="#">Product List</a>
+    <router-link class="navbar-brand" to="/" tag="a">Product List</router-link>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Product operations</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Product sale</a>
-        </li>
+        <router-link to="/product-operations" tag="li" class="nav-item" active-class="active">
+          <a class="nav-link">Product Operations</a>
+        </router-link>
+        <router-link to="/product-sale" tag="li" class="nav-item" active-class="active">
+          <a class="nav-link">Product Sale</a>
+        </router-link>
       </ul>
     </div>
   </nav>
