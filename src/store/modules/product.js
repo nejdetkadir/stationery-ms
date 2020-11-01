@@ -24,12 +24,11 @@ const actions = {
     // processes of vue resource
     console.log(commit);
   },
-  saveProduct({ commit }, product) {
-    // processes of vue resource
-    console.log(commit, product);
-    Vue.axios.post(`${process.env.VUE_APP_FIREBASE_DATASE_URL}products.json`, product)
+  saveProduct({ commit, state }, product) {
+    Vue.axios.post(`${process.env.VUE_APP_FIREBASE_DATABASE_URL}products.json`, product)
       .then((res) => {
-        console.log(res);
+        commit("updateProductList", {id: res.data.name, ...product})
+        console.log(state.products);
       })
       .catch((err) => {
         console.log(err)
