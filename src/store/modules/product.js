@@ -1,4 +1,5 @@
 import Vue from "vue";
+import {router} from "@/router";
 
 const state = {
   products: [],
@@ -35,7 +36,8 @@ const actions = {
           sale: 0,
           piece: product.piece
         }
-        dispatch("setTradeResult", tradeResult)
+        dispatch("setTradeResult", tradeResult);
+        router.replace("/");
       })
       .catch((err) => {
         console.log(err)
