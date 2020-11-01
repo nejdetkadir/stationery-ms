@@ -1,5 +1,11 @@
 <template>
   <div class="container">
+    <div class="loading" v-if="saveClicked">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-6 offset-3 pt-3 card mt-5 shadow">
         <div class="card-body">
@@ -40,8 +46,8 @@ export default {
         piece: null,
         price: null,
         description: '',
-        saveClicked: false
-      }
+      },
+      saveClicked: false
     }
   },
   methods: {

@@ -22,7 +22,7 @@ const mutations = {
 
 const actions = {
   initApp({ commit }) {
-    // processes of vue resource
+    // processes of vue axios
     console.log(commit);
   },
   saveProduct({ dispatch, commit }, product) {

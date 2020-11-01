@@ -24,6 +24,8 @@
 </script>
 
 <style>
+  @import "assets/loading.css";
+
   body{
     background-color: #77889940 !important;
   }
