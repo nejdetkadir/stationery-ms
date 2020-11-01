@@ -4,11 +4,11 @@
         <strong>example.com</strong> | nejdetkadirr
     </span>
     <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
-        <strong>Total sell : </strong>
+        <strong>Total Purchase : </strong>
         <span class="badge badge-danger">{{ getTradeResult.totalPurchase }}</span>
     </span>
     <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
-        <strong>Total purchase : </strong>
+        <strong>Total Sale : </strong>
         <span class="badge badge-success">{{ getTradeResult.totalSale }}</span>
     </span>
     <span class="navbar-text navbar-nav my-2 my-lg-0">

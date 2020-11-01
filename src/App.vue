@@ -14,6 +14,9 @@
     components: {
       Header,
       Footer
+    },
+    created() {
+      this.$store.dispatch("getTradeResult");
     }
   }
 </script>

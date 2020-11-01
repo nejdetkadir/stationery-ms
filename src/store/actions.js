@@ -16,5 +16,11 @@ export const setTradeResult = ({state, commit}, tradeResult) => {
 };
 
 export const getTradeResult = ({commit}) => {
-  console.log(commit);
+  Vue.axios.get(`${process.env.VUE_APP_FIREBASE_DATABASE_URL}trade-result.json`)
+    .then((res) => {
+      commit("updateTradeResult", res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
