@@ -56,6 +56,17 @@ export default {
         return true;
       }
     }
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.product.name.length > 0 || this.product.piece > 0 || this.product.price > 0 || this.product.description.length > 0) {
+      if (confirm("There are unsaved information, Are you sure want to go other page?")) {
+        next();
+      } else {
+        next(false)
+      }
+    } else {
+      next();
+    }
   }
 }
 </script>
