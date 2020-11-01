@@ -5,15 +5,15 @@
     </span>
     <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
         <strong>Total Purchase : </strong>
-        <span class="badge badge-danger">{{ getTradeResult.totalPurchase }}</span>
+        <span class="badge badge-danger">{{ getTradeResult.totalPurchase | currency }}</span>
     </span>
     <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
         <strong>Total Sale : </strong>
-        <span class="badge badge-success">{{ getTradeResult.totalSale }}</span>
+        <span class="badge badge-success">{{ getTradeResult.totalSale | currency}}</span>
     </span>
     <span class="navbar-text navbar-nav my-2 my-lg-0">
         <strong>Balance : </strong>
-        <span class="badge badge-primary">{{ getTradeResult.balance }}</span>
+        <span class="badge badge-primary">{{ getTradeResult.balance | currency }}</span>
     </span>
   </nav>
 </template>
