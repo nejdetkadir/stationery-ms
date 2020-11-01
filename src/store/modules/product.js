@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 const state = {
   products: [],
 };
@@ -25,6 +27,13 @@ const actions = {
   saveProduct({ commit }, product) {
     // processes of vue resource
     console.log(commit, product);
+    Vue.axios.post(`${process.env.VUE_APP_FIREBASE_DATASE_URL}products.json`, product)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err)
+      });
   },
   sellProduct({ commit }, product) {
     // processes of vue resource

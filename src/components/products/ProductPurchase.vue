@@ -7,23 +7,23 @@
           <hr>
           <div class="form-group">
             <label>Product name</label>
-            <input type="text" class="form-control" placeholder="Enter the name of product">
+            <input type="text" class="form-control" placeholder="Enter the name of product" v-model="product.name">
           </div>
           <div class="form-group">
             <label>Piece</label>
-            <input type="text" class="form-control" placeholder="enter the piece of product">
+            <input type="number" class="form-control" placeholder="enter the piece of product" v-model="product.piece">
           </div>
           <div class="form-group">
             <label>Price</label>
-            <input type="text" class="form-control" placeholder="Enter the price of product">
+            <input type="text" class="form-control" placeholder="Enter the price of product" v-model="product.price">
           </div>
           <div class="form-group">
             <label>Description</label>
             <textarea cols="30" rows="5" placeholder="Enter the description about product"
-                      class="form-control"></textarea>
+                      class="form-control" v-model="product.description"></textarea>
           </div>
           <hr>
-          <button class="btn btn-primary">Save</button>
+          <button class="btn btn-primary" @click="saveProduct">Save</button>
         </div>
       </div>
     </div>
@@ -32,7 +32,22 @@
 
 <script>
 export default {
-  name: "ProductPurchase"
+  name: "ProductPurchase",
+  data() {
+    return{
+      product: {
+        name: '',
+        piece: null,
+        price: null,
+        description: ''
+      }
+    }
+  },
+  methods: {
+    saveProduct() {
+      this.$store.dispatch("saveProduct", this.product)
+    }
+  }
 }
 </script>
 
