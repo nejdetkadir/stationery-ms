@@ -15,7 +15,7 @@
           </div>
           <div class="form-group">
             <label>Price</label>
-            <input type="text" class="form-control" placeholder="Enter the price of product" v-model="product.price">
+            <input type="number" class="form-control" placeholder="Enter the price of product" v-model="product.price">
           </div>
           <div class="form-group">
             <label>Description</label>
@@ -23,7 +23,7 @@
                       class="form-control" v-model="product.description"></textarea>
           </div>
           <hr>
-          <button class="btn btn-primary" @click="saveProduct">Save</button>
+          <button class="btn btn-primary" :disabled="saveEnable" @click="saveProduct">Save</button>
         </div>
       </div>
     </div>
@@ -46,6 +46,15 @@ export default {
   methods: {
     saveProduct() {
       this.$store.dispatch("saveProduct", this.product)
+    }
+  },
+  computed: {
+    saveEnable() {
+      if (this.product.name.length > 0 && this.product.piece > 0 && this.product.price > 0 && this.product.description.length > 0) {
+        return false;
+      } else {
+        return true;
+      }
     }
   }
 }
