@@ -1,4 +1,11 @@
 # stationery-ms
+This application created with VueJS for learning it. 
+This application is using
+-   [Firebase](https://firebase.google.com/)
+-   [Vuex](https://github.com/vuejs/vuex)
+-   [Axios](https://github.com/axios/axios)
+
+![cover](doc/cover.gif)
 
 ## Project setup
 ```
@@ -48,3 +55,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ```
+
+### NOTE 
+The founding father of this game is [Gökhan Kandemir](https://www.youtube.com/channel/UCYT5QTr38bwp85Pka8YSVIg). This application created for learning VueJS with [his course](https://www.udemy.com/course/sifirdan-ileri-seviye-vuejs-2-vuex-vue-router-egitim-seti/) from [Udemy](https://www.udemy.com/).
