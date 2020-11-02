@@ -12,6 +12,12 @@ This application is using
 npm install
 ```
 
+### Environment variables
+Create a file named ".env.local" in the root directory and fill its contents as follows.
+```ruby
+VUE_APP_FIREBASE_DATABASE_URL = XXX
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
