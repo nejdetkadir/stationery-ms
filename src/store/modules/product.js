@@ -53,9 +53,31 @@ const actions = {
         console.log(err)
       });
   },
-  sellProduct({ commit }, product) {
-    // processes of vue resource
-    console.log(commit, product);
+  sellProduct({ state, dispatch }, payload) {
+    // processes of vue axios
+    let product = state.products.filter(element => {
+      return element.id === payload.id;
+    });
+
+    if (product) {
+      let totalPiece = product[0].piece - payload.piece;
+      Vue.axios.patch(`${process.env.VUE_APP_FIREBASE_DATABASE_URL}products/${payload.id}.json`, {
+        piece: totalPiece
+      })
+        .then(() => {
+          product[0].piece = totalPiece;
+          let tradeResult = {
+            price: 0,
+            sale: product[0].price,
+            piece: payload.piece
+          }
+          dispatch("setTradeResult", tradeResult);
+          router.replace("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 };
 
