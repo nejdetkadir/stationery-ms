@@ -16,7 +16,7 @@
             <select class="form-control" v-model="selectedProduct" @change="productSelected">
               <option selected disabled>Please select a product</option>
               <option
-                  :disabled="product.piece == 0"
+                  :disabled="product.piece === 0"
                   :value="product.id"
                   v-for="product in getProducts"
                   :key="product.id">{{ product.name }}</option>
@@ -39,7 +39,7 @@
           </transition>
           <div class="form-group">
             <label>Piece</label>
-            <input type="number" v-model="productPiece" class="form-control" placeholder="Please enter piece of product..">
+            <input type="number" v-model="productPiece" class="form-control" :class="{'border-danger' : onErrorClass}" placeholder="Please enter piece of product..">
           </div>
           <hr>
           <button @click="sellProduct" :disabled="saveEnable" class="btn btn-primary">Save</button>
@@ -59,18 +59,19 @@ export default {
       selectedProduct: null,
       product: null,
       productPiece: null,
-      saveClicked: false
+      saveClicked: false,
+      onErrorClass: false
     }
   },
   computed: {
     ...mapGetters(["getProducts"]),
     saveEnable() {
-      if (this.selectedProduct != null && this.product != null && this.productPiece != null) {
+      if (this.selectedProduct != null && this.product != null && this.productPiece != null && this.productPiece <= this.product.piece) {
         return false;
       } else {
         return true;
       }
-    }
+    },
   },
   methods: {
     productSelected() {
@@ -93,6 +94,18 @@ export default {
       }
     } else {
       next();
+    }
+  },
+  watch: {
+    product: function() {
+      if (this.productPiece != null && this.productPiece > 0) {
+        this.onErrorClass = this.productPiece > this.product.piece;
+      }
+    },
+    productPiece: function() {
+      if (this.product != null) {
+        this.onErrorClass = this.productPiece > this.product.piece;
+      }
     }
   }
 }
